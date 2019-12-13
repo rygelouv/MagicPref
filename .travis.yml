@@ -11,9 +11,9 @@ env:
 
 # Run assemble, unit tests, and create coverage report
 script:
-  - ./gradlew clean assembleDebug assembleRelease testDebug
+  - ./gradlew clean assembleDebug assembleRelease testDebug createDebugUnitTestCoverageReport
   # Renaming folder and files of reports so codecov.io can find it
-#  - mv app/build/reports/jacoco/createDebugUnitTestCoverageReport app/build/reports/jacoco/jacocoTestDebugUnitTestReport
-#  - mv app/build/reports/jacoco/jacocoTestDebugUnitTestReport/createDebugUnitTestCoverageReport.xml app/build/reports/jacoco/jacocoTestDebugUnitTestReport/jacocoTestDebugUnitTestReport.xml
-#  # Codecov.io
-#  - bash <(curl -s https://codecov.io/bash)
+  - mv app/build/reports/jacoco/createDebugUnitTestCoverageReport app/build/reports/jacoco/jacocoTestDebugUnitTestReport
+  - mv app/build/reports/jacoco/jacocoTestDebugUnitTestReport/createDebugUnitTestCoverageReport.xml app/build/reports/jacoco/jacocoTestDebugUnitTestReport/jacocoTestDebugUnitTestReport.xml
+  # Codecov.io
+  - bash <(curl -s https://codecov.io/bash)
