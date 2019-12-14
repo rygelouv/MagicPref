@@ -50,6 +50,11 @@ It's simple, really. Just like using a lazy delegate
             }
 ```
 
+## TODO
+- Make MagicPref.sharePrefInstance private and wrap it in a clean form
+- Run on release mode to check proguard issues
+- Maybe more test
+
 
 License
 --------
