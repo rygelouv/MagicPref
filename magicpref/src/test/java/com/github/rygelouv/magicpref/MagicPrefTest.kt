@@ -19,35 +19,29 @@ import org.mockito.MockitoAnnotations
 
 class MagicPrefUnitTest {
 
-    private val KEY_NAME = "name"
-
-    private val KEY_PHONE = "phone"
-
-    private val TEST_NAME = "Nicole"
-
-    private val TEST_PHONE = 761234567L
-
-
     @Mock
     var mockSharedPreferences: SharedPreferences? = null
     @Mock
     var mMockEditor: SharedPreferences.Editor? = null
 
-
-    lateinit var numberPref: StringPref
+    lateinit var textPref: StringPref
+    lateinit var numberPref: IntPref
+    lateinit var floatNumberPref: FloatPref
 
 
     @Before
-    fun initMocks() {
+    fun setUp() {
         MockitoAnnotations.initMocks(this)
-        numberPref = createMockSharedPreference()
+        textPref = createMockSharedPreferenceForStringPref()
+        numberPref = createMockSharedPreferenceForIntPref()
+        floatNumberPref = createMockSharedPreferenceForFloatPref()
     }
 
 
     @Test
     fun stringPref_SaveAndReadValue() {
         class UserData {
-            var name by numberPref
+            var name by textPref
         }
 
         val userData = UserData()
@@ -55,13 +49,33 @@ class MagicPrefUnitTest {
     }
 
 
-    private fun createMockSharedPreference(): StringPref {
+    @Test
+    fun intPref_SaveAndReadValue() {
+        class UserData {
+            var id by numberPref
+        }
+
+        val userData = UserData()
+        assertEquals(userData.id, TEST_ID)
+    }
+
+
+    @Test
+    fun floatPref_SaveAndReadValue() {
+        class UserData {
+            var amount by floatNumberPref
+        }
+
+        val userData = UserData()
+        assertEquals(userData.amount, TEST_AMOUNT)
+    }
+
+
+    private fun createMockSharedPreferenceForStringPref(): StringPref {
         // Mocking reading the SharedPreferences as if mockSharedPreferences was previously written
         // correctly.
         `when`(mockSharedPreferences?.getString(eq(KEY_NAME), anyString()))
             .thenReturn(TEST_NAME)
-        `when`(mockSharedPreferences?.getLong(eq(KEY_PHONE), anyLong()))
-            .thenReturn(TEST_PHONE)
 
         // Mocking a successful commit.
         `when`(mMockEditor?.commit()).thenReturn(true)
@@ -69,5 +83,27 @@ class MagicPrefUnitTest {
         // Return the MockEditor when requesting it.
         `when`(mockSharedPreferences?.edit()).thenReturn(mMockEditor)
         return StringPref(preferences = mockSharedPreferences)
+    }
+
+    private fun createMockSharedPreferenceForIntPref(): IntPref {
+        `when`(mockSharedPreferences?.getInt(eq(KEY_ID), anyInt()))
+            .thenReturn(TEST_ID)
+        /*`when`(mockSharedPreferences?.getLong(eq(KEY_PHONE), anyLong()))
+            .thenReturn(TEST_PHONE)*/
+
+        `when`(mMockEditor?.commit()).thenReturn(true)
+
+        `when`(mockSharedPreferences?.edit()).thenReturn(mMockEditor)
+        return IntPref(preferences = mockSharedPreferences)
+    }
+
+    private fun createMockSharedPreferenceForFloatPref(): FloatPref {
+        `when`(mockSharedPreferences?.getFloat(eq(KEY_AMOUNT), anyFloat()))
+            .thenReturn(TEST_AMOUNT)
+
+        `when`(mMockEditor?.commit()).thenReturn(true)
+
+        `when`(mockSharedPreferences?.edit()).thenReturn(mMockEditor)
+        return FloatPref(preferences = mockSharedPreferences)
     }
 }

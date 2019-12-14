@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        MagicPref.init(this)
+        // MagicPref.init(this)
         val user = UserInfo().apply {
             name = "Bernard Mamadou Diop"
             amount = 345.50.toFloat()

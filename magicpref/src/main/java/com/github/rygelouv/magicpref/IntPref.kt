@@ -10,18 +10,18 @@ import kotlin.reflect.KProperty
  * Copyright (c) 2019 Makeba Inc All rights reserved.
  */
 
-class InPref(
+class IntPref(
     val key: String? = null,
     val defaultValue: Int = 0,
-    val preferences: SharedPreferences = MagicPref.sharePrefInstance
+    val preferences: SharedPreferences? = MagicPref.sharePrefInstance
 ): PrefProperty<Int>() {
     override fun getValueFromPref(property: KProperty<*>): Int {
-        return preferences.getInt(key ?: property.name, defaultValue)
+        return preferences?.getInt(key ?: property.name, defaultValue)!!
     }
 
     override fun setValueToPref(property: KProperty<*>, value: Int) {
-        preferences.edit().putInt(key ?: property.name, value).apply()
+        preferences?.edit()?.putInt(key ?: property.name, value)?.apply()
     }
 }
 
-fun intPref(key: String? = null, defaultValue: Int = 0): PrefProperty<Int> = InPref(key, defaultValue)
+fun intPref(key: String? = null, defaultValue: Int = 0): PrefProperty<Int> = IntPref(key, defaultValue)
