@@ -7,7 +7,6 @@ import kotlin.reflect.KProperty
  * Created by rygelouv on 2019-12-13.
  * <p>
  * MagicPref
- * Copyright (c) 2019 Makeba Inc All rights reserved.
  */
 
 class IntPref(
