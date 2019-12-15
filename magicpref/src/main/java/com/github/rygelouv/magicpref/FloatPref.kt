@@ -24,10 +24,10 @@ limitations under the License.
  */
 
 
-class FloatPref(
-    val key: String? = null,
-    val defaultValue: Float = 0F,
-    val preferences: SharedPreferences? = MagicPref.sharePrefInstance
+internal class FloatPref(
+    private val key: String? = null,
+    private val defaultValue: Float = 0F,
+    private val preferences: SharedPreferences? = MagicPref.sharePrefInstance
 ) : PrefProperty<Float>() {
     override fun getValueFromPref(property: KProperty<*>): Float {
         return preferences?.getFloat(key ?: property.name, defaultValue)!!

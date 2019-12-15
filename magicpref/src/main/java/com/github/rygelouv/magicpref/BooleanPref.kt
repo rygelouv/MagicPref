@@ -23,18 +23,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-
-class BooleanPref(
-    val key: String? = null,
-    val defaultValue: Boolean = false,
-    val preferences: SharedPreferences = MagicPref.sharePrefInstance
+internal class BooleanPref(
+    private val key: String? = null,
+    private val defaultValue: Boolean = false,
+    private val preferences: SharedPreferences = MagicPref.sharePrefInstance
 ): PrefProperty<Boolean>() {
     override fun getValueFromPref(property: KProperty<*>): Boolean {
-        return preferences.getBoolean(key, defaultValue)
+        return preferences.getBoolean(key ?: property.name, defaultValue)
     }
 
     override fun setValueToPref(property: KProperty<*>, value: Boolean) {
-        preferences.edit().putBoolean(key, value).apply()
+        preferences.edit().putBoolean(key ?: property.name, value).apply()
     }
 }
 

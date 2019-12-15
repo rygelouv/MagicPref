@@ -9,10 +9,10 @@ import kotlin.reflect.KProperty
  * MagicPref
  */
 
-class IntPref(
-    val key: String? = null,
-    val defaultValue: Int = 0,
-    val preferences: SharedPreferences? = MagicPref.sharePrefInstance
+internal class IntPref(
+    private val key: String? = null,
+    private val defaultValue: Int = 0,
+    private val preferences: SharedPreferences? = MagicPref.sharePrefInstance
 ): PrefProperty<Int>() {
     override fun getValueFromPref(property: KProperty<*>): Int {
         return preferences?.getInt(key ?: property.name, defaultValue)!!
