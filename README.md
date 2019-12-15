@@ -7,7 +7,7 @@ MagicPref is an Android library that uses the power of Kotlin delegation to simp
 the use of Android Shared Preferences. It also make use of the brand new EncryptedSharedPreferences (still in alpha) from the AndroidX security library
 If the library is used on Android M or higher it uses EncryptSharedPreferences otherwise it falls back to the default SharedPreferences
 
-**MagicPref is a liter version of KotPref a very powerfull library that has the same goal except for the EncryptedSharedPreferences**
+**MagicPref is a simpler version of [KotPref](http://www.rygelouv.wordpress.com/) a very powerfull library that has the same goal except for the EncryptedSharedPreferences**
 
 
 ## Install it
