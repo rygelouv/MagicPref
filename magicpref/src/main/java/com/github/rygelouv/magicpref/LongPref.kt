@@ -24,10 +24,10 @@ limitations under the License. https://github.com/chibatching/Kotpref
  */
 
 
-class LongPref(
-    val key: String? = null,
-    val defaultValue: Long = 0L,
-    val preferences: SharedPreferences = MagicPref.sharePrefInstance
+internal class LongPref(
+    private val key: String? = null,
+    private val defaultValue: Long = 0L,
+    private val preferences: SharedPreferences = MagicPref.sharePrefInstance
 ): PrefProperty<Long>() {
     override fun getValueFromPref(property: KProperty<*>): Long {
         return preferences.getLong(key ?: property.name, defaultValue)

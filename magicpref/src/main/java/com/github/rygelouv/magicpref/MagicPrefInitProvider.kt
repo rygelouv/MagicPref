@@ -26,7 +26,7 @@ limitations under the License.
  */
 
 
-class MagicPrefInitProvider : ContentProvider() {
+internal class MagicPrefInitProvider : ContentProvider() {
     override fun onCreate(): Boolean {
         MagicPref.init(context!!)
         return true

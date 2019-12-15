@@ -24,7 +24,7 @@ limitations under the License.
  */
 
 
-object MagicPref {
+internal object MagicPref {
     lateinit var sharePrefInstance: SharedPreferences
     private var mode = Context.MODE_PRIVATE
     private var prefFileName = javaClass.simpleName

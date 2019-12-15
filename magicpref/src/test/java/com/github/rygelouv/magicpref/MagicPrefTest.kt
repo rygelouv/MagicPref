@@ -31,9 +31,9 @@ class MagicPrefUnitTest {
     @Mock
     var mMockEditor: SharedPreferences.Editor? = null
 
-    lateinit var textPref: StringPref
-    lateinit var numberPref: IntPref
-    lateinit var floatNumberPref: FloatPref
+    internal lateinit var textPref: StringPref
+    internal lateinit var numberPref: IntPref
+    internal lateinit var floatNumberPref: FloatPref
 
 
     @Before
