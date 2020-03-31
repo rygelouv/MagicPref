@@ -24,12 +24,12 @@ limitations under the License.
  */
 
 
-internal object MagicPref {
+object MagicPref {
     lateinit var sharePrefInstance: SharedPreferences
     private var mode = Context.MODE_PRIVATE
     private var prefFileName = javaClass.simpleName
 
-    fun init(context: Context) {
+    internal fun init(context: Context) {
         sharePrefInstance = SharedPreferenceFactory.newInstance(context, prefFileName, mode)
     }
 }

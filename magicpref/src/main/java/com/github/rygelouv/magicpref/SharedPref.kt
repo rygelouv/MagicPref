@@ -33,7 +33,7 @@ internal object SharedPreferenceFactory {
             // Create or retrieve the Master Key for encryption/decryption
             val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
             EncryptedSharedPreferences.create(
-                "PreferencesFilename",
+                fileName,
                 masterKeyAlias,
                 context,
                 EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,

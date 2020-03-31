@@ -19,8 +19,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -36,7 +41,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    api "androidx.security:security-crypto:1.0.0-alpha02"
+    api "androidx.security:security-crypto:1.0.0-beta01"
 
     testImplementation 'org.mockito:mockito-core:1.10.19'
     androidTestImplementation 'org.mockito:mockito-core:1.10.19'
